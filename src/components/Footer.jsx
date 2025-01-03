@@ -1,7 +1,7 @@
 function Footer() {
     return (
       <footer className="footer">
-        <p>© 2025 Quiz App. By Nadezda Budarina</p>
+        <p>© 2025 Quiz App. By Nadezda</p>
       </footer>
     );
   }

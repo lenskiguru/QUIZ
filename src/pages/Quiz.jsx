@@ -3,7 +3,7 @@ import { fetchQuestions } from "../api/triviaApi";
 import { useNavigate } from "react-router-dom";
 
 const TOTAL_QUESTIONS = 10;
-const TIMER_DURATION = 10;
+const TIMER_DURATION = 20;
 
 function Quiz() {
   const [questions, setQuestions] = useState([]);
