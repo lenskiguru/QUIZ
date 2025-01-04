@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../firebase";
 import { useState, useEffect } from "react";
-import logo from "../assets/logo.png";
 import "../App.css";
 
 function Login() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -14,23 +14,27 @@ function Login() {
     }
   }, []);
 
+  const handleStartQuiz = () => {
+    navigate("/quiz");
+  };
+
   const handleLogout = () => {
     signOut(auth);
     setUser(null);
     localStorage.removeItem("user");
+    navigate("/");
   };
 
   return (
     <div className="app-container">
       <div className="login-card">
-        <img src={logo} alt="Quiz Logo" className="logo" />
         {user ? (
           <>
-            <h2>Welcome, {user.displayName}!</h2>
-            <Link to="/quiz">
-              <button>Start Quiz</button>
-            </Link>
-            <button onClick={handleLogout} style={{ marginTop: "10px" }}>Logout</button>
+            <h2>Welcome, {user.displayName || user.email}!</h2>
+            <button onClick={handleStartQuiz}>Start Quiz</button>
+            <button onClick={handleLogout}>
+              Logout
+            </button>
           </>
         ) : (
           <h2>Please login from the home page</h2>

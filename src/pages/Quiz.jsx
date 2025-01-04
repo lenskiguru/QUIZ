@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { fetchQuestions } from "../api/triviaApi";
 import { useNavigate } from "react-router-dom";
 
-const TOTAL_QUESTIONS = 10;
+const TOTAL_QUESTIONS = 5;
 const TIMER_DURATION = 20;
 
 function Quiz() {
